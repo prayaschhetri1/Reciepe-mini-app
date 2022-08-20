@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./navStyle/navbar.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <div id="data"></div>
+  </body>
+</html>
+<script type="module">
+  let container = document.querySelector("#header");
+
+  import navbar from "./components/navbar.js";
+
+  // import { showReceipe, append } from "./scripts/fetchAppend.js";
+  //   console.log(showReceipe, append);
+
+  let parent = document.querySelector("#data");
+
+  //   console.log(navbar)
+
+  container.innerHTML = navbar;
+  let msearch = document.getElementById("search");
+  msearch.addEventListener("keypress", () => {
+    getData(event);
+  });
+
+  const getData = async (e) => {
+    try {
+      if (e.code === "Enter") {
+        let input = msearch.value;
+        let res = await fetch(
+          `https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`
+        );
+        let data = await res.json();
+
+        console.log("data:", data.meals);
+        append(data.meals);
+      }
+    } catch (err) {
+      console.log("err :", err);
+    }
+  };
+
+  const append = (data) => {
+    console.log(data);
+    data.forEach((el) => {
+      let div = document.createElement("div");
+      div.setAttribute("class", "poster");
+
+      let tdiv = document.createElement("div");
+      tdiv.setAttribute("class", "desc");
+
+      let poster = document.createElement("img");
+      poster.src = el.strMealThumb;
+
+      let title = document.createElement("p");
+      title.innerText = "Title:" + " " + el.strMeal;
+
+      let catagory = document.createElement("p");
+      catagory.innerText = "Catogory:" + " " + el.strCategory;
+
+      let instruct = document.createElement("p");
+      instruct.innerText = "Instruction :" + " " + el.strInstructions;
+
+      div.append(poster);
+      tdiv.append(title, catagory, instruct);
+
+      parent.append(div, tdiv);
+    });
+  };
+
+  // console.log(response)
+
+  // append(response.meals,parent)
+</script>
+
+<!-- <script src="./components/input.js">
+
+</script> -->

@@ -1,0 +1,28 @@
+input{
+    display: block;
+    height: 30px;
+    margin-top: 18px;
+    width: 250px;
+    border-radius: 13px;
+    color: rgb(240, 240, 250);
+    background-color:rgb(48, 114, 145);
+    font-size: 21px;
+
+}
+
+input::placeholder{
+    color: rgb(214, 198, 198);
+}
+
+#data{
+    display: grid;
+    padding: 3%;
+    
+    grid-gap: 15px;
+}
+
+
+#data>div>img{
+    width: 50%;
+    height : 100%;
+}

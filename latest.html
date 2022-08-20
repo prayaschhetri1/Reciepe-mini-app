@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./navStyle/navbar.css">
+    <link rel="stylesheet" href="./styles/random.css">
+</head>
+<body>
+
+    <div id="header"></div>
+
+    <div id="data"></div>
+    
+</body>
+</html>
+
+<script type="module">
+
+let container = document.querySelector("#header")
+    import navbar from "./components/navbar.js";
+  //   console.log(navbar)
+  
+    container.innerHTML = navbar;
+    let parent = document.querySelector("#data");
+   
+
+    import { showReceipe, append } from "./scripts/fetchAppend.js";
+    // console.log(showReceipe, append)
+
+    let res = await showReceipe(`https://www.themealdb.com/api/json/v1/1/search.php?s=Eccles Cakes`)
+     
+    // console.log(res.meals)
+  
+    append(res.meals,parent)
+
+
+
+
+</script>

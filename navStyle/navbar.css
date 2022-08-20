@@ -1,0 +1,33 @@
+*{
+    font-family: sans-serif;
+}
+#navbar{
+    display: flex;
+    justify-content: space-around;
+    border: 3px solid black;
+    border-radius: 30px;
+    background-image: linear-gradient(to bottom right, rgb(27, 212, 83), rgb(40, 194, 233));
+}
+a{
+    text-decoration: none;
+    color: beige;
+}
+#options{
+    display: flex;
+    justify-content: flex-end;
+    gap: 50px;
+   
+
+}
+#title{
+ color: rgb(110, 84, 84);
+}
+
+
+ input{
+    display: none;
+}
+
+body{
+  background-color: aqua;
+}
